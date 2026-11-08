@@ -1,0 +1,107 @@
+== A. boundary cases (batch sent twice in one process) ==
+PASS run1 lcs both empty
+PASS run1 lcs one empty
+PASS run1 lcs subsequence not substring
+PASS run1 lcs repeated characters
+PASS run1 lcs alternative optima
+PASS run1 lcs case and punctuation
+PASS run1 merge no blocks
+PASS run1 merge one block
+PASS run1 merge README example
+PASS run1 merge adjacency matters
+PASS run1 merge zeros and ties
+PASS run1 merge large total
+PASS run1 merge four blocks
+PASS run1 tree empty
+PASS run1 tree single positive
+PASS run1 tree all negative
+PASS run1 tree README example
+PASS run1 tree star
+PASS run1 tree zero weights and ties
+PASS run1 tree large sum
+PASS run1 naive empty pattern
+PASS run1 kmp empty pattern empty text
+PASS run1 rk empty text
+PASS run1 kmp pattern longer
+PASS run1 naive overlaps
+PASS run1 kmp overlaps after full match
+PASS run1 kmp case and punctuation
+PASS run1 rk known collision ab/dj
+PASS run1 rk collision as pattern
+PASS run1 rk negative remainder
+PASS run1 rk overlaps and empty pattern
+PASS run1 suffix empty
+PASS run1 suffix one char
+PASS run1 suffix all equal
+PASS run1 suffix all distinct
+PASS run1 suffix banana
+PASS run1 suffix tied longest repeats
+PASS run1 aho empty dictionary
+PASS run1 aho no texts
+PASS run1 aho duplicates, suffix patterns, empty text, independent texts
+PASS run1 aho overlaps and nested
+PASS run2 lcs both empty
+PASS run2 lcs one empty
+PASS run2 lcs subsequence not substring
+PASS run2 lcs repeated characters
+PASS run2 lcs alternative optima
+PASS run2 lcs case and punctuation
+PASS run2 merge no blocks
+PASS run2 merge one block
+PASS run2 merge README example
+PASS run2 merge adjacency matters
+PASS run2 merge zeros and ties
+PASS run2 merge large total
+PASS run2 merge four blocks
+PASS run2 tree empty
+PASS run2 tree single positive
+PASS run2 tree all negative
+PASS run2 tree README example
+PASS run2 tree star
+PASS run2 tree zero weights and ties
+PASS run2 tree large sum
+PASS run2 naive empty pattern
+PASS run2 kmp empty pattern empty text
+PASS run2 rk empty text
+PASS run2 kmp pattern longer
+PASS run2 naive overlaps
+PASS run2 kmp overlaps after full match
+PASS run2 kmp case and punctuation
+PASS run2 rk known collision ab/dj
+PASS run2 rk collision as pattern
+PASS run2 rk negative remainder
+PASS run2 rk overlaps and empty pattern
+PASS run2 suffix empty
+PASS run2 suffix one char
+PASS run2 suffix all equal
+PASS run2 suffix all distinct
+PASS run2 suffix banana
+PASS run2 suffix tied longest repeats
+PASS run2 aho empty dictionary
+PASS run2 aho no texts
+PASS run2 aho duplicates, suffix patterns, empty text, independent texts
+PASS run2 aho overlaps and nested
+PASS state reset: both runs identical
+== B. random differential tests vs brute-force oracles (seed 4) ==
+PASS lcs: 150 random cases agree with oracle
+PASS merge: 150 random cases agree with oracle
+PASS tree: 150 random cases agree with oracle
+PASS suffix: 150 random cases agree with oracle
+PASS aho: 150 random cases agree with oracle
+== C. naive / kmp / rk identical on the same inputs (seed 7) ==
+PASS 300 inputs: naive == kmp == rk == oracle
+== D. full published limits, one process per command (seed 2026) ==
+PASS lcs 1000x1000: 0.09 s
+PASS merge n=200, sizes up to 1e9: 0.10 s
+PASS tree deep chain n=1e5: 0.13 s
+PASS tree random n=1e5: 0.22 s
+PASS naive 3000/1500 all 'a': 0.11 s
+PASS kmp 200000/100000 all 'a': 0.05 s
+PASS kmp 200000 random, empty pattern: 0.04 s
+PASS rk 10000/2000 all 'a' (every window a candidate): 0.64 s
+PASS suffix 50000 random: 0.12 s
+PASS suffix 50000 all 'a': 0.15 s
+PASS aho 10000 patterns, 100 texts, total 200000: 0.13 s
+PASS aho dense: 'a'*k patterns, 'a' texts: 0.05 s
+
+ALL TESTS PASSED
