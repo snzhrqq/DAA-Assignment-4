@@ -1,0 +1,22 @@
+Python 3.13.18 (CPython) on Linux-6.18.44-fc-v310-x86_64-with-glibc2.39; timer=time.perf_counter; warm-up=1; runs=5
+
+|Case|n|m|Seed/generator|Algorithm|Run 1|Run 2|Run 3|Run 4|Run 5|Median (ms)|Correct outputs checked|
+|---|---:|---:|---|---|---:|---:|---:|---:|---:|---:|---|
+|random|750|50|Random(2026), alphabet abcd|naive|0.05|0.05|0.05|0.05|0.05|0.05|yes, 1 matches, all 3 equal + oracle|
+|random|750|50|Random(2026), alphabet abcd|kmp|0.06|0.05|0.05|0.05|0.07|0.05|yes, 1 matches, all 3 equal + oracle|
+|random|750|50|Random(2026), alphabet abcd|rk|0.08|1.01|0.08|0.08|0.07|0.08|yes, 1 matches, all 3 equal + oracle|
+|random|1500|150|Random(2026), alphabet abcd|naive|0.10|0.12|0.13|0.10|0.10|0.10|yes, 1 matches, all 3 equal + oracle|
+|random|1500|150|Random(2026), alphabet abcd|kmp|0.11|0.11|0.10|0.10|0.10|0.10|yes, 1 matches, all 3 equal + oracle|
+|random|1500|150|Random(2026), alphabet abcd|rk|0.18|0.20|0.16|0.16|0.16|0.16|yes, 1 matches, all 3 equal + oracle|
+|random|3000|300|Random(2026), alphabet abcd|naive|0.20|0.21|0.21|0.20|0.23|0.21|yes, 1 matches, all 3 equal + oracle|
+|random|3000|300|Random(2026), alphabet abcd|kmp|0.20|0.20|0.21|0.21|0.20|0.20|yes, 1 matches, all 3 equal + oracle|
+|random|3000|300|Random(2026), alphabet abcd|rk|0.32|0.37|0.31|0.30|0.30|0.31|yes, 1 matches, all 3 equal + oracle|
+|repetitive|750|50|'a'*n / 'a'*(m-1)+'b'|naive|1.24|1.19|1.28|1.29|1.27|1.27|yes, 0 matches, all 3 equal + oracle|
+|repetitive|750|50|'a'*n / 'a'*(m-1)+'b'|kmp|0.08|0.07|0.07|0.09|0.07|0.07|yes, 0 matches, all 3 equal + oracle|
+|repetitive|750|50|'a'*n / 'a'*(m-1)+'b'|rk|0.08|0.08|0.07|0.07|0.07|0.07|yes, 0 matches, all 3 equal + oracle|
+|repetitive|1500|150|'a'*n / 'a'*(m-1)+'b'|naive|7.35|7.18|7.13|7.17|7.60|7.18|yes, 0 matches, all 3 equal + oracle|
+|repetitive|1500|150|'a'*n / 'a'*(m-1)+'b'|kmp|0.17|0.15|0.18|0.18|0.16|0.17|yes, 0 matches, all 3 equal + oracle|
+|repetitive|1500|150|'a'*n / 'a'*(m-1)+'b'|rk|0.16|0.16|0.16|0.21|0.18|0.16|yes, 0 matches, all 3 equal + oracle|
+|repetitive|3000|300|'a'*n / 'a'*(m-1)+'b'|naive|30.00|29.46|29.89|28.78|29.09|29.46|yes, 0 matches, all 3 equal + oracle|
+|repetitive|3000|300|'a'*n / 'a'*(m-1)+'b'|kmp|0.31|0.33|0.29|0.29|0.32|0.31|yes, 0 matches, all 3 equal + oracle|
+|repetitive|3000|300|'a'*n / 'a'*(m-1)+'b'|rk|0.36|0.32|0.31|0.29|0.29|0.31|yes, 0 matches, all 3 equal + oracle|

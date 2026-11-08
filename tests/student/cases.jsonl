@@ -1,0 +1,41 @@
+{"task":"lcs","a":"","b":""}
+{"task":"lcs","a":"abc","b":""}
+{"task":"lcs","a":"tea_time","b":"team"}
+{"task":"lcs","a":"aaaa","b":"aa"}
+{"task":"lcs","a":"ab","b":"ba"}
+{"task":"lcs","a":"Ab, c!","b":"ab, c?"}
+{"task":"merge","sizes":[]}
+{"task":"merge","sizes":[7]}
+{"task":"merge","sizes":[2,3,4]}
+{"task":"merge","sizes":[1,100,1]}
+{"task":"merge","sizes":[0,0,0,0]}
+{"task":"merge","sizes":[1000000000,1000000000,1000000000]}
+{"task":"merge","sizes":[1,2,3,4]}
+{"task":"tree","n":0,"weights":[],"edges":[]}
+{"task":"tree","n":1,"weights":[5],"edges":[]}
+{"task":"tree","n":3,"weights":[-1,-5,-2],"edges":[[0,1],[1,2]]}
+{"task":"tree","n":3,"weights":[4,9,6],"edges":[[0,1],[1,2]]}
+{"task":"tree","n":5,"weights":[10,3,3,3,3],"edges":[[0,1],[0,2],[0,3],[0,4]]}
+{"task":"tree","n":4,"weights":[5,0,5,0],"edges":[[0,1],[1,2],[2,3]]}
+{"task":"tree","n":4,"weights":[-5,1000000000,1000000000,1000000000],"edges":[[0,1],[0,2],[0,3]]}
+{"task":"naive","text":"abc","pattern":""}
+{"task":"kmp","text":"","pattern":""}
+{"task":"rk","text":"","pattern":"a"}
+{"task":"kmp","text":"ab","pattern":"abc"}
+{"task":"naive","text":"aaaaa","pattern":"aaa"}
+{"task":"kmp","text":"abababa","pattern":"aba"}
+{"task":"kmp","text":"a.b A.b","pattern":"A.b"}
+{"task":"rk","text":"abdj","pattern":"ab"}
+{"task":"rk","text":"abdjab","pattern":"dj"}
+{"task":"rk","text":"~~ !~ !","pattern":" !"}
+{"task":"rk","text":"x","pattern":""}
+{"task":"suffix","text":""}
+{"task":"suffix","text":"z"}
+{"task":"suffix","text":"aaaa"}
+{"task":"suffix","text":"dcba"}
+{"task":"suffix","text":"banana"}
+{"task":"suffix","text":"abxabcdycd"}
+{"task":"aho","patterns":[],"texts":["abc",""]}
+{"task":"aho","patterns":["a"],"texts":[]}
+{"task":"aho","patterns":["he","she","he"],"texts":["sheshe","sheshe",""]}
+{"task":"aho","patterns":["aaa","a","aa"],"texts":["aaaa"]}

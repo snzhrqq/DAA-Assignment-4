@@ -1,0 +1,48 @@
+[
+  {"name": "lcs both empty", "why": "Empty prefix has LCS 0.", "input": {"task": "lcs", "a": "", "b": ""}, "expected": {"length": 0, "sequence": ""}},
+  {"name": "lcs one empty", "why": "If either string is empty the answer is 0 and \"\".", "input": {"task": "lcs", "a": "abc", "b": ""}, "expected": {"length": 0, "sequence": ""}},
+  {"name": "lcs subsequence not substring", "why": "team is a subsequence of tea_time (t,e,a, then m) but not a substring.", "input": {"task": "lcs", "a": "tea_time", "b": "team"}, "expected": {"length": 4, "sequence": "team"}},
+  {"name": "lcs repeated characters", "why": "a=aaaa, b=aa: only two a's can be matched.", "input": {"task": "lcs", "a": "aaaa", "b": "aa"}, "expected": {"length": 2, "sequence": "aa"}},
+  {"name": "lcs alternative optima", "why": "ab vs ba: both 'a' and 'b' are optimal (length 1); either is accepted.", "input": {"task": "lcs", "a": "ab", "b": "ba"}, "expected": {"length": 1, "sequence": "b"}},
+  {"name": "lcs case and punctuation", "why": "A and a differ; spaces/punctuation are normal characters: common 'b, c'.", "input": {"task": "lcs", "a": "Ab, c!", "b": "ab, c?"}, "expected": {"length": 4, "sequence": "b, c"}},
+
+  {"name": "merge no blocks", "why": "n=0: nothing to merge.", "input": {"task": "merge", "sizes": []}, "expected": {"cost": 0, "plan": []}},
+  {"name": "merge one block", "why": "n=1: already one block.", "input": {"task": "merge", "sizes": [7]}, "expected": {"cost": 0, "plan": []}},
+  {"name": "merge README example", "why": "(2+3)=5 then 5+4=9: total 14; the other order gives 7+9=16.", "input": {"task": "merge", "sizes": [2, 3, 4]}, "expected": {"cost": 14, "plan": [[0, 0, 1], [0, 1, 2]]}},
+  {"name": "merge adjacency matters", "why": "[1,100,1]: greedy would merge the two 1's, but they are not adjacent. Any valid order costs 101+102=203.", "input": {"task": "merge", "sizes": [1, 100, 1]}, "expected": {"cost": 203, "plan": [[0, 0, 1], [0, 1, 2]]}},
+  {"name": "merge zeros and ties", "why": "All zero sizes: every plan costs 0; several plans are optimal.", "input": {"task": "merge", "sizes": [0, 0, 0, 0]}, "expected": {"cost": 0, "plan": [[0, 0, 1], [2, 2, 3], [0, 1, 3]]}},
+  {"name": "merge large total", "why": "Two blocks of 1e9 and one more: (1e9+1e9) + 3e9 = 5e9 > 2^31.", "input": {"task": "merge", "sizes": [1000000000, 1000000000, 1000000000]}, "expected": {"cost": 5000000000, "plan": [[0, 0, 1], [0, 1, 2]]}},
+  {"name": "merge four blocks", "why": "[1,2,3,4]: best is (1+2)=3, (3+3)=6, (6+4)=10 -> 19.", "input": {"task": "merge", "sizes": [1, 2, 3, 4]}, "expected": {"cost": 19, "plan": [[0, 0, 1], [0, 1, 2], [0, 2, 3]]}},
+
+  {"name": "tree empty", "why": "n=0: empty set, weight 0.", "input": {"task": "tree", "n": 0, "weights": [], "edges": []}, "expected": {"weight": 0, "selected": []}},
+  {"name": "tree single positive", "why": "One vertex with weight 5 is taken.", "input": {"task": "tree", "n": 1, "weights": [5], "edges": []}, "expected": {"weight": 5, "selected": [0]}},
+  {"name": "tree all negative", "why": "The empty set (weight 0) beats any negative choice.", "input": {"task": "tree", "n": 3, "weights": [-1, -5, -2], "edges": [[0, 1], [1, 2]]}, "expected": {"weight": 0, "selected": []}},
+  {"name": "tree README example", "why": "4+6 = 10 > 9 (middle only).", "input": {"task": "tree", "n": 3, "weights": [4, 9, 6], "edges": [[0, 1], [1, 2]]}, "expected": {"weight": 10, "selected": [0, 2]}},
+  {"name": "tree star", "why": "Centre 10 vs four leaves 3+3+3+3=12: take the leaves.", "input": {"task": "tree", "n": 5, "weights": [10, 3, 3, 3, 3], "edges": [[0, 1], [0, 2], [0, 3], [0, 4]]}, "expected": {"weight": 12, "selected": [1, 2, 3, 4]}},
+  {"name": "tree zero weights and ties", "why": "Zero-weight vertices add nothing; 5 at 0 or 5 at 2 with 0 between: best 10 from {0,2}.", "input": {"task": "tree", "n": 4, "weights": [5, 0, 5, 0], "edges": [[0, 1], [1, 2], [2, 3]]}, "expected": {"weight": 10, "selected": [0, 2]}},
+  {"name": "tree large sum", "why": "Two non-adjacent leaves of 1e9 and one of 1e9: 3e9 > 2^31.", "input": {"task": "tree", "n": 4, "weights": [-5, 1000000000, 1000000000, 1000000000], "edges": [[0, 1], [0, 2], [0, 3]]}, "expected": {"weight": 3000000000, "selected": [1, 2, 3]}},
+
+  {"name": "naive empty pattern", "why": "Empty pattern matches every boundary 0..n: 4 starts for 'abc'.", "input": {"task": "naive", "text": "abc", "pattern": ""}, "expected": {"positions": [0, 1, 2, 3]}},
+  {"name": "kmp empty pattern empty text", "why": "n=0: one boundary, position 0.", "input": {"task": "kmp", "text": "", "pattern": ""}, "expected": {"positions": [0]}},
+  {"name": "rk empty text", "why": "Nonempty pattern cannot fit in empty text.", "input": {"task": "rk", "text": "", "pattern": "a"}, "expected": {"positions": []}},
+  {"name": "kmp pattern longer", "why": "m > n returns [].", "input": {"task": "kmp", "text": "ab", "pattern": "abc"}, "expected": {"positions": []}},
+  {"name": "naive overlaps", "why": "aaa occurs at 0,1,2 in aaaaa (overlaps count).", "input": {"task": "naive", "text": "aaaaa", "pattern": "aaa"}, "expected": {"positions": [0, 1, 2]}},
+  {"name": "kmp overlaps after full match", "why": "Fallback pi after a match keeps starts 2 and 4.", "input": {"task": "kmp", "text": "abababa", "pattern": "aba"}, "expected": {"positions": [0, 2, 4]}},
+  {"name": "kmp case and punctuation", "why": "Case-sensitive: 'A.b' matches only at 4, not 'a.b' at 0.", "input": {"task": "kmp", "text": "a.b A.b", "pattern": "A.b"}, "expected": {"positions": [4]}},
+  {"name": "rk known collision ab/dj", "why": "ab and dj both hash to 75 (base 31, mod 101). dj must be rejected by character check.", "input": {"task": "rk", "text": "abdj", "pattern": "ab"}, "expected": {"positions": [0]}},
+  {"name": "rk collision as pattern", "why": "Pattern dj: window ab is an equal-hash candidate that must be rejected.", "input": {"task": "rk", "text": "abdjab", "pattern": "dj"}, "expected": {"positions": [2]}},
+  {"name": "rk negative remainder", "why": "Removing a large leftmost char code makes the intermediate value negative; it must be normalized. '~' is code 126.", "input": {"task": "rk", "text": "~~ !~ !", "pattern": " !"}, "expected": {"positions": [2, 5]}},
+  {"name": "rk overlaps and empty pattern", "why": "Shared contract with KMP: 2 boundaries for text 'x'.", "input": {"task": "rk", "text": "x", "pattern": ""}, "expected": {"positions": [0, 1]}},
+
+  {"name": "suffix empty", "why": "Empty text: all three empty.", "input": {"task": "suffix", "text": ""}, "expected": {"sa": [], "lcp": [], "repeated": ""}},
+  {"name": "suffix one char", "why": "Only suffix 0; no repeat.", "input": {"task": "suffix", "text": "z"}, "expected": {"sa": [0], "lcp": [0], "repeated": ""}},
+  {"name": "suffix all equal", "why": "aaaa: shorter suffix is smaller -> sa 3,2,1,0; lcp 0,1,2,3; repeat 'aaa' at 0 and 1 (overlap).", "input": {"task": "suffix", "text": "aaaa"}, "expected": {"sa": [3, 2, 1, 0], "lcp": [0, 1, 2, 3], "repeated": "aaa"}},
+  {"name": "suffix all distinct", "why": "dcba: all characters distinct -> no repeat, lcp all 0.", "input": {"task": "suffix", "text": "dcba"}, "expected": {"sa": [3, 2, 1, 0], "lcp": [0, 0, 0, 0], "repeated": ""}},
+  {"name": "suffix banana", "why": "Published example; ana occurs at 1 and 3 (overlapping).", "input": {"task": "suffix", "text": "banana"}, "expected": {"sa": [5, 3, 1, 0, 4, 2], "lcp": [0, 1, 3, 0, 0, 2], "repeated": "ana"}},
+  {"name": "suffix tied longest repeats", "why": "abxabcdycd: 'ab' and 'cd' both repeat with length 2; either is accepted.", "input": {"task": "suffix", "text": "abxabcdycd"}, "expected": {"sa": [3, 0, 4, 1, 8, 5, 9, 6, 2, 7], "lcp": [0, 2, 0, 1, 0, 2, 0, 1, 0, 0], "repeated": "ab"}},
+
+  {"name": "aho empty dictionary", "why": "p=0: one empty row per text.", "input": {"task": "aho", "patterns": [], "texts": ["abc", ""]}, "expected": {"counts": [[], []]}},
+  {"name": "aho no texts", "why": "texts=[] gives counts=[].", "input": {"task": "aho", "patterns": ["a"], "texts": []}, "expected": {"counts": []}},
+  {"name": "aho duplicates, suffix patterns, empty text, independent texts", "why": "he is a suffix of she, so it is counted inside 'she'. Duplicate 'he' gets the same count. Second identical text starts fresh. Empty text gives zeros.", "input": {"task": "aho", "patterns": ["he", "she", "he"], "texts": ["sheshe", "sheshe", ""]}, "expected": {"counts": [[2, 2, 2], [2, 2, 2], [0, 0, 0]]}},
+  {"name": "aho overlaps and nested", "why": "In 'aaaa': 'a' 4 times, 'aa' 3, 'aaa' 2 (overlaps counted).", "input": {"task": "aho", "patterns": ["aaa", "a", "aa"], "texts": ["aaaa"]}, "expected": {"counts": [[2, 4, 3]]}}
+]
